@@ -58,7 +58,7 @@ jobs:
             java -jar access-detector.jar -p 8080 -ngrok
 
             # Redirect all requests to another URL
-            java -jar access-detector.jar -p 8080 -r https://example.com
+            java -jar access-detector.jar -p 8080 -r [https://example.com](https://example.com)
 
             # Serve a file while logging access
             java -jar access-detector.jar -p 8080 -file index.html -l access.txt

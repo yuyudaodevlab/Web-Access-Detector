@@ -31,7 +31,6 @@ jobs:
 
       - name: Build Fat JAR
         run: mvn clean package -DskipTests
-        working-directory: access-detector
 
       - name: Create GitHub Release and upload JAR
         uses: softprops/action-gh-release@v2
@@ -63,6 +62,6 @@ jobs:
             # Serve a file while logging access
             java -jar access-detector.jar -p 8080 -file index.html -l access.txt
             ```
-          files: access-detector/target/access-detector.jar
+          files: target/access-detector.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

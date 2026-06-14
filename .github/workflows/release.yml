@@ -30,7 +30,7 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: Build Fat JAR
-        working-directory: .
+        working-directory: ${{ github.workspace }}
         run: mvn clean package -DskipTests
 
       - name: Create GitHub Release and upload JAR

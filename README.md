@@ -18,9 +18,8 @@ GitHub リリースページからコンパイル済みの `access-detector.jar`
 以下のコマンドを使用して実行します：
 
 ```bash
-java -Dfile.encoding=UTF-8 -jar access-detector.jar [オプション]
+java -jar access-detector.jar [オプション]
 ```
-※ Windows 環境でログファイルへの出力が文字化けする場合は、`-Dfile.encoding=UTF-8` オプションを追加して強制的に UTF-8 で出力してください。
 
 ## オプション一覧
 

@@ -34,7 +34,8 @@ jobs:
 
       - name: Build Fat JAR
         working-directory: ${{ github.workspace }}
-        run: mvn clean package -DskipTests
+        shell: bash
+        run: ./mvnw clean package -DskipTests
 
       - name: Rename JAR for specific OS
         shell: bash

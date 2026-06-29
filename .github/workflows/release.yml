@@ -9,7 +9,10 @@ permissions:
 
 jobs:
   build-and-release:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
       - name: Checkout source
@@ -32,6 +35,10 @@ jobs:
       - name: Build Fat JAR
         working-directory: ${{ github.workspace }}
         run: mvn clean package -DskipTests
+
+      - name: Rename JAR for specific OS
+        shell: bash
+        run: mv target/access-detector.jar target/access-detector-${{ runner.os }}.jar
 
       - name: Create GitHub Release and upload JAR
         uses: softprops/action-gh-release@v2
@@ -63,6 +70,6 @@ jobs:
             # Serve a file while logging access
             java -jar access-detector.jar -p 8080 -file index.html -l access.txt
             ```
-          files: target/access-detector.jar
+          files: target/access-detector-${{ runner.os }}.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

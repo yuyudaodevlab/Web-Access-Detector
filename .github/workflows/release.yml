@@ -23,14 +23,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-
-      - name: Cache Maven dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
+          cache: 'maven' # 💡 Tip: This single line replaces your entire manual cache step!
 
       - name: Build Fat JAR
         working-directory: ${{ github.workspace }}

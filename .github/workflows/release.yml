@@ -26,8 +26,8 @@ jobs:
           cache: 'maven' # 💡 Tip: This single line replaces your entire manual cache step!
 
       - name: Build Fat JAR
+        working-directory: ${{ github.workspace }}
         shell: bash
-        # Ensure the wrapper is executable, then run it instead of 'mvn'
         run: |
           chmod +x mvnw
           ./mvnw clean package -DskipTests
